@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    #canvas {
+      height: 500px;
+      width: 500px;
+      border: 1px solid darkslategray;
+    }
+  </style>
+  <title>Pointer Lock Api</title>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    let ctx = document.getElementById('canvas').getContext('2d')
+    ctx.fillStyle = 'cornflowerblue'
+    ctx.fillRect(10, 5, 100, 50)
+
+    let c = document.getElementById("canvas")
+    c.addEventListener("click", e => {
+      let p = document.pointerLockElement
+      console.log("Before pointer lock: ", p)
+  
+      c.requestPointerLock()
+
+      p = document.pointerLockElement
+      console.log("After pointer lock: ", p)
+
+      setTimeout(() => {
+        p = document.pointerLockElement
+        console.log("After set timeout: ", p)
+      }, 100)
+    })
+
+
+    document.addEventListener("pointerlockchange", e => {
+      console.log("The pointer lock was actually changed")
+
+      let p = document.pointerLockElement
+      console.log("After the pointer lock change event: ", p)
+
+      // After registering a change in the pointerlock, it turns it off after 1 second
+      setTimeout(() => {
+        console.log("Exiting pointer lock")
+        document.exitPointerLock() // async
+      }, 2000)
+    })
+  </script>
+</body>
+</html>

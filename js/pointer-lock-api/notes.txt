@@ -1,0 +1,18 @@
+# pointer lock api
+
+## summary
+
+- mouse input methods
+  - deltas and absolute positions
+- get mouse events even after curse is not in browser or screen
+- sends events independent of mouse button state
+- hides cursor
+
+## uses
+
+- games
+- viewing maps
+
+# connections
+
+- moues events
