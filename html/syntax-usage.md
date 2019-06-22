@@ -18,7 +18,7 @@
 blockquote - quotes large (> paragraph)
 q - quotes small (< paragraph)
 
-### coode
+### code
 
 code - generic
 pre - code blocks (retain whitespace)
