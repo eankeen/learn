@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    .square {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      margin: 10px;
+    }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <div class="square" id="one" draggable="true"></div>
+    <div class="square" draggable="true"></div>
+    <div class="square"></div>
+    <div class="square" id="four"></div>
+  </main>
+  <script>
+    let one = document.getElementById("one")
+    one.addEventListener("dragstart", e => {
+      // e.preventDefault()
+
+      console.log("drag start")
+
+      let i = new Image()
+      i.src = "https://media4.s-nbcnews.com/j/newscms/2019_23/1438326/guy-fieri-today-main-190517_7c2d3e7baf3a88975a1de9f8f25e7d60.fit-760w.jpg"
+      e.dataTransfer.setDragImage(i, 50, 50)
+      
+      let event = e;
+      event.dataTransfer.effectAllowed  = "move"
+
+      let a = e.dataTransfer.setData("text/plain", "some data")
+      console.log(e)
+    })
+
+    let four = document.getElementById("four")
+    four.addEventListener("dragover", event => {
+      console.log("dragged over")
+    })
+    four.addEventListener("drop", event => {
+      let d = event.dataTransfer.getData("text/plain")
+      console.log(d)
+      console.log("dropped")
+    })
+  </script>
+</body>
+</html>

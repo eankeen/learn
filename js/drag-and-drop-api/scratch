@@ -1,0 +1,8 @@
+drag
+
+
+draggable elemetns
+drooppable elemetns
+
+if draggable draggable=true
+if droppable? dragenter, dragover (not dragleave)
