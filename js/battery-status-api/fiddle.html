@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="main"></div>  
+  <script>
+    console.log(navigator);
+
+    window.navigator.getBattery()
+      .then(battery => {
+        console.log(battery);
+
+        recheck()
+        function recheck() {
+          console.log(`Current battery status: ${battery.level}`)
+          if(battery.charging) {
+            console.log(`Battery is charging. Gonna take ${battery.chargingTime} to charge.`)
+          }
+          else {
+            console.log(`Battery is not charging. Gonna take ${battery.dischargingTime} to discharge`)
+          }
+        }
+
+        battery.addEventListener("chargingchange", () => {
+          console.log("Your battery status has changed");
+          recheck()
+          setTimeout(recheck, 6000)
+        })
+
+      })
+      // battery promise never rejected
+  </script>
+</body>
+</html>

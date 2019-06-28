@@ -1,0 +1,7 @@
+# battery-status-api
+
+## summary
+
+- **deprecated**
+- extends window.navigator with navigator.getBattery(), returns promise
+- only supported since Chrome 38 (and Opera 25)
